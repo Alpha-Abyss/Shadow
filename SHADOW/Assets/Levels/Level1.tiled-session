@@ -3,12 +3,21 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "adve/map.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "adve",
         "."
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 2
+        },
+        "#tiles": {
+            "scaleInDock": 2
+        },
+        "#tiles.org": {
+            "scaleInDock": 4
+        },
         "adve/map.tmx": {
             "scale": 2.3376157407407407,
             "selectedLayer": 0,
@@ -21,11 +30,19 @@
             "scaleInDock": 1
         }
     },
+    "last.imagePath": "D:/Technophile/1. Game Dev/Personal Projects/Sole/Shadow/SHADOW/Assets/Levels/adve",
+    "map.fixedSize": false,
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
     "openFiles": [
-        "adve/map.tmx"
     ],
     "project": "Level1.tiled-project",
     "recentFiles": [
         "adve/map.tmx"
-    ]
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    }
 }
