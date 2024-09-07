@@ -44,7 +44,7 @@ class JSONMapLoader:
         rect = pygame.Rect(tile_x * tilewidth, tile_y * tileheight, tilewidth, tileheight)
         return tileset_image.subsurface(rect)
 
-    def draw_layer(self, surface, layer):
+    def draw_layer(self, surface, layer, camera_x, camera_y):
         if 'chunks' in layer:
             # Loop through each chunk
             for chunk in layer['chunks']:
@@ -60,9 +60,14 @@ class JSONMapLoader:
                         if tile_image:
                             tile_x = (chunk_x + x) * self.tilewidth
                             tile_y = (chunk_y + y) * self.tileheight
+
+                            # Apply camera offset
+                            tile_x -= camera_x
+                            tile_y -= camera_y
+
                             surface.blit(tile_image, (tile_x, tile_y))
 
-    def draw(self, surface):
+    def draw(self, surface, camera_x, camera_y):
         for layer in self.map_data['layers']:
             if layer['type'] == 'tilelayer':
-                self.draw_layer(surface, layer)
+                self.draw_layer(surface, layer, camera_x, camera_y)

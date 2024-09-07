@@ -114,12 +114,14 @@ def gameloop():
 
     # Load the JSON map
     map_loader = JSONMapLoader("Shadow\SHADOW\Assets\Levels\L1.json")
-
     
     # Create player instance and sprite group
     player = PLAYER()
     all_sprites = pygame.sprite.Group(player)
-    
+
+    # Initialize camera
+    camera_x, camera_y = 0, 0
+
     running = True
     while running:
         dt = clock.tick(60) / 1000  # Delta time in seconds
@@ -131,16 +133,21 @@ def gameloop():
                 running = False
                 pygame.quit()
                 sys.exit()
-        
-        # Draw the map
-        map_loader.draw(Screen)
 
-        all_sprites.update(dt)
+        # Handle player movement and update camera position
+        player.update(dt)
         
-        all_sprites.draw(Screen)  # Draw all sprites
+        # Update camera position based on player's position
+        camera_x = player.rect.centerx - size[0] // 2
+        camera_y = player.rect.centery - size[1] // 2
+        
+        # Draw the map with scrolling effect
+        map_loader.draw(Screen, camera_x, camera_y)
+
+        # Draw all sprites
+        all_sprites.draw(Screen) 
         
         pygame.display.update()
 
 if __name__ == '__main__':
-    Game = gameloop()
-    Game
+    gameloop()
