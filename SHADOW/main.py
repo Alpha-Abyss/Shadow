@@ -1,6 +1,7 @@
 import pygame
 import sys
 import os
+from Levels import JSONMapLoader
 
 pygame.init()
 
@@ -110,6 +111,10 @@ class PLAYER(pygame.sprite.Sprite):
 #----- MAIN
 def gameloop():
     clock = pygame.time.Clock()
+
+    # Load the JSON map
+    map_loader = JSONMapLoader("Shadow\SHADOW\Assets\Levels\L1.json")
+
     
     # Create player instance and sprite group
     player = PLAYER()
@@ -127,6 +132,9 @@ def gameloop():
                 pygame.quit()
                 sys.exit()
         
+        # Draw the map
+        map_loader.draw(Screen)
+
         all_sprites.update(dt)
         
         all_sprites.draw(Screen)  # Draw all sprites
